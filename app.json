@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "Neoenergia",
+    "slug": "Neoenergia",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "Neoenergia"
+}
