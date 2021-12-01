@@ -14,7 +14,7 @@ const Routes = () => {
     return (
         //@ts-ignore
         <NavigationContainer ref={navigationRef}>
-            {signed ? <AppRoutes /> : <AuthRoutes initialRoute={onboard} />}
+            {!signed ? <AppRoutes /> : <AuthRoutes initialRoute={onboard} />}
         </NavigationContainer>
     )
 }

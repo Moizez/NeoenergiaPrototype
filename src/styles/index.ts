@@ -6,7 +6,8 @@ import { Modalize } from 'react-native-modalize';
 
 import {
   ContainerProps, SpacerProps, TextProps, ButtonProps, SnackbarProps, TextInputProps,
-  HelperTextProps, ScrollViewProps, ActivityIndicatorProps, OnboardingProps, ModalProps
+  HelperTextProps, ScrollViewProps, ActivityIndicatorProps, OnboardingProps, ImageProps,
+  ModalProps, CoverProps, TouchableProps
 } from './TStyles'
 
 import {
@@ -26,18 +27,13 @@ export const Container = styled.View<ContainerProps>`
   align-items: ${props => props.align || 'flex-start'};
 
   width: ${props => props.width || '100%'};
-  max-width: ${props => props.maxWidth || '100%'};
-  min-width: ${props => props.minWidth || '100%'};
   height: ${props => props.height || 'auto'};
+  max-width: ${props => props.maxWidth || '100%'};
   max-height: ${props => props.maxHeight || 'auto'};
-  min-height: ${props => props.minHeight || 'auto'};
 
   padding: ${props => props.hasPadding ? '20px' : props.customPadding ? props.customPadding : '0'};
-  padding-top: ${props => props.removePaddingTop ? '0' : props.hasPadding ? '20px' : '0px'};
-  padding-bottom: ${props => props.removePaddingBottom ? '0' : props.hasPadding ? '20px' : '0px'};
-  
   margin: ${props => props.margin || 0};
-  border-radius: ${props => props.radius ? '5px' : '0px'};
+  border-radius: ${props => props.radius ? '10px' : props.customRadius ? props.customRadius : '0'};
   border-width: ${props => `${props.border || 0}px`};
   border-color: ${props => `${props.theme[props?.borderColor] || props?.borderColor || '#000'}`};
   background: ${props => `${props.theme[props?.background] || props?.background || 'transparent'}`};
@@ -50,8 +46,6 @@ export const ScrollView = styled.ScrollView.attrs<ScrollViewProps>(props => ({
   width: 100%;
   margin: ${props => props.margin || 0};
   padding: ${props => props.hasPadding ? '20px' : props.customPadding ? props.customPadding : '0'};
-  padding-top: ${props => props.removePaddingTop ? '0' : props.hasPadding ? '20px' : '0px'};
-  padding-bottom: ${props => props.removePaddingBottom ? '0' : props.hasPadding ? '20px' : '0px'};
   background: ${props => `${props.theme[props?.background] || props?.background || 'transparent'}`};
 `;
 
@@ -64,23 +58,18 @@ export const ContainerKeyboardAvoiding = styled.KeyboardAvoidingView<ContainerPr
 
   width: ${props => props.width || '100%'};
   max-width: ${props => props.maxWidth || '100%'};
-  min-width: ${props => props.minWidth || '100%'};
   height: ${props => props.height || 'auto'};
   max-height: ${props => props.maxHeight || 'auto'};
-  min-height: ${props => props.minHeight || 'auto'};
 
   padding: ${props => props.hasPadding ? '20px' : props.customPadding ? props.customPadding : '0'};
-  padding-top: ${props => props.removePaddingTop ? '0' : props.hasPadding ? '20px' : '0px'};
-  padding-bottom: ${props => props.removePaddingBottom ? '0' : props.hasPadding ? '20px' : '0px'};
-  
   margin: ${props => props.margin || 0};
-  border-radius: ${props => props.radius ? '5px' : '0px'};
+  border-radius: ${props => props.radius ? '10px' : props.customRadius ? props.customRadius : '0'};
   border-width: ${props => `${props.border || 0}px`};
   border-color: ${props => `${props.theme[props?.borderColor] || props?.borderColor || '#000'}`};
   background: ${props => `${props.theme[props?.background] || props?.background || 'transparent'}`};
 `;
 
-export const Touchable = styled.TouchableOpacity<ContainerProps>`
+export const Touchable = styled.TouchableOpacity<TouchableProps>`
   flex-wrap: ${props => props.wrap || 'nowrap'};
   flex-direction: ${props => props.row ? 'row' : 'column'};
   justify-content: ${props => props.justify || 'flex-start'};
@@ -88,39 +77,69 @@ export const Touchable = styled.TouchableOpacity<ContainerProps>`
 
   width: ${props => props.width || '100%'};
   max-width: ${props => props.maxWidth || '100%'};
-  min-width: ${props => props.minWidth || '100%'};
   height: ${props => props.height || 'auto'};
   max-height: ${props => props.maxHeight || 'auto'};
-  min-height: ${props => props.minHeight || 'auto'};
 
   padding: ${props => props.hasPadding ? '20px' : props.customPadding ? props.customPadding : '0'};
-  padding-top: ${props => props.removePaddingTop ? '0' : props.hasPadding ? '20px' : '0px'};
-  padding-bottom: ${props => props.removePaddingBottom ? '0' : props.hasPadding ? '20px' : '0px'};
-
   margin: ${props => props.margin || 0};
-  border-radius: ${props => props.radius || 0};
+  border-radius: ${props => props.radius ? '10px' : props.customRadius ? props.customRadius : '0'};
   border: ${props => props.border || 'none'};
 
-  background: ${props => props?.background ? 'rgba(0, 0, 0, 0.5)' : 'transparent'};
+  background: ${props => `${props.theme[props?.background] || props?.background || 'transparent'}`};
 `;
 
+export const Cover = styled.ImageBackground.attrs<CoverProps>(props => ({
+  resizeMode: props.mode || 'contain',
+})) <CoverProps>`
+  width: ${props => props.width || '100px'};
+  height: ${props => props.height || '100px'};
+  justify-content: ${props => props.justify || 'flex-start'};
+  padding: ${props => props.hasPadding ? '20px' : props.customPadding ? props.customPadding : '0'};
+  max-height: ${props => props.height || '100px'};
+  margin: ${props => props.margin || 0};
+  border-radius: ${props => props.radius || 0}px;
+  border: ${props => props.border || 'none'};
+  overflow: hidden;
+`;
+
+export const Image = styled.Image.attrs<ImageProps>(props => ({
+  resizeMode: props.mode || 'contain',
+})) <ImageProps>`
+  width: ${props => props.width || '100'}px;
+  height: ${props => props.height || '100'}px;
+`;
+
+// Roboto_100Thin,
+// Roboto_100Thin_Italic,
+// Roboto_300Light,
+// Roboto_300Light_Italic,
+// Roboto_400Regular,
+// Roboto_400Regular_Italic,
+// Roboto_500Medium,
+// Roboto_500Medium_Italic,
+// Roboto_700Bold,
+// Roboto_700Bold_Italic,
+// Roboto_900Black,
+// Roboto_900Black_Italic
+
 export const Title = styled.Text <TextProps>`
-  font-size: ${props => props.small ? '20px' : props.big ? '40px' : props.size ? props.size + 'px' : '30px'};
+  font-size: ${props => props.small ? '20px' : props.big ? '40px' : props.size ? props.size + 'px' : '25px'};
   text-align: ${props => props.align || 'left'};
   letter-spacing: ${props => props.spacing ? props.spacing + 'px' : '0'};
   font-weight: ${props => props.bold ? 'bold' : 'normal'};
   color: ${props => `${props.theme[props?.color] || props.color || colors.dark}`};
   margin: ${props => props.margin || 0};
-  letter-spacing: ${props => props.spacing ? props.spacing + 'px' : '0'};
   padding: ${props => props.hasPadding ? '20px' : props.customPadding ? props.customPadding : '0'};
   opacity: ${props => props.opacity || 1};
   text-decoration: ${props => props.decoration || 'none'};
+  font-family: 'Roboto_400Regular';
 `;
 
 export const Text = styled.Text <TextProps>`
   color: ${props => `${props.theme[props?.color] || props.color || colors.dark}`};
   font-size: ${props => (props.small ? '13px' : '17px')};
-  margin: ${props => props.margin || 0};
+  margin: ${props => props.margin || 0}px;
+  font-weight: ${props => props.bold ? 'bold' : 'normal'};
   letter-spacing: ${props => props.spacing ? props.spacing + 'px' : '0'};
   padding: ${props => props.hasPadding ? '20px' : props.customPadding ? props.customPadding : '0'};
   opacity: ${props => props.opacity || 1};
@@ -143,15 +162,15 @@ export const Button = styled(ButtonPaper).attrs<ButtonProps>(props => ({
 
 export const TextInput = styled(TextInputPaper).attrs<TextInputProps>(props => ({
   mode: 'outlined',
-  outlineColor: props.theme.secondary,
-  underlineColor: props.theme.secondary,
-  selectionColor: props.theme.secondary,
+  outlineColor: props.theme.primary,
+  underlineColor: props.theme.primary,
+  selectionColor: props.theme.primary,
   theme: {
     colors: {
-      text: props.theme.dark,
-      primary: props.theme.dark,
+      text: props.theme.primary,
+      primary: props.theme.primary,
       background: props.theme.light,
-      placeholder: props.theme.dark,
+      placeholder: props.theme.primary,
     },
   }
 })) <TextInputProps>`
@@ -196,7 +215,7 @@ export const Spacer = styled.View<SpacerProps>`
   height: ${props => props.size ? props.size + 'px' : props.vertical ? '100%' : '10px'};
 `;
 
-export const Searchbar = styled(SearchbarPaper)<SpacerProps>``;
+export const Searchbar = styled(SearchbarPaper) <SpacerProps>``;
 
 export const Modal = styled(Modalize).attrs<ModalProps>(props => ({
   adjustToContentHeight: props.adjustToContentHeight || false,

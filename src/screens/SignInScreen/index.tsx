@@ -8,12 +8,14 @@ import { initialValuesSignIn, signInSchema } from '../../schemas/formSchema'
 import { colors } from '../../styles/theme.json'
 import { GlobalState } from '../../utils/types'
 import { navigate } from '../../utils/rootNavigation'
-// import { closeAlert, openAlert } from '../../store/modules/storageless/actions'
+import { closeAlert, openAlert } from '../../store/modules/storageless/actions'
+//@ts-ignore
+import logo from '../../assets/images/logo-removebg.png'
 import { Keyboard } from 'react-native'
 
 import {
     Container, ContainerKeyboardAvoiding, Title, Text, TextInput,
-    Button, Spacer, HelperText, Snackbar, Touchable
+    Button, Spacer, HelperText, Snackbar, Touchable, Image
 } from '../../styles';
 
 const SignIn = () => {
@@ -72,9 +74,11 @@ const SignIn = () => {
             <Container background='light' hasPadding>
 
                 <Container align='center' justify='center'>
-                    <Title color='secondary'>Boilerplate React Native</Title>
-                    <Text>App exemplo para novos projetos</Text>
-
+                    <Image
+                        source={logo}
+                        height={250}
+                        width={250}
+                    />
                 </Container>
 
                 <ContainerKeyboardAvoiding>
@@ -82,7 +86,7 @@ const SignIn = () => {
                     <TextInput
                         label='Seu e-mail'
                         placeholder='Digite seu e-mail'
-                        placeholderTextColor={formik.touched.email && formik.errors.email ? colors.danger : colors.secondary}
+                        placeholderTextColor={formik.touched.email && formik.errors.email ? colors.danger : colors.primary}
                         keyboardType='email-address'
                         autoCapitalize='none'
                         value={formik.values.email}
@@ -92,7 +96,7 @@ const SignIn = () => {
                         error={formik.touched.email && formik.errors.email}
                         right={
                             <TextInput.Icon
-                                color={formik.touched.email && formik.errors.email ? colors.danger : colors.secondary}
+                                color={formik.touched.email && formik.errors.email ? colors.danger : colors.primary}
                                 name='email'
                                 style={{ marginTop: 15 }}
                             />
@@ -109,7 +113,7 @@ const SignIn = () => {
                     <TextInput
                         label='Sua senha'
                         placeholder='Digite sua senha'
-                        placeholderTextColor={formik.touched.password && formik.errors.password ? colors.danger : colors.secondary}
+                        placeholderTextColor={formik.touched.password && formik.errors.password ? colors.danger : colors.primary}
                         secureTextEntry={eye ? false : true}
                         autoCapitalize='none'
                         value={formik.values.password}
@@ -119,8 +123,8 @@ const SignIn = () => {
                         error={formik.touched.password && formik.errors.password}
                         right={
                             <TextInput.Icon
-                                color={formik.touched.password && formik.errors.password ? colors.danger : colors.secondary}
-                                name={eye ? 'eye-off' : 'eye'}
+                                color={formik.touched.password && formik.errors.password ? colors.danger : colors.primary}
+                                name={eye ? 'eye' : 'eye-off'}
                                 onPress={() => setEye(!eye)}
                                 style={{ marginTop: 15 }}
                             />
@@ -136,7 +140,6 @@ const SignIn = () => {
 
                     <Button
                         block
-                        background='secondary'
                         onPress={formik.handleSubmit}
                         loading={loading}
                     >
@@ -148,8 +151,9 @@ const SignIn = () => {
                         align='center'
                         justify='center'
                         margin='30px 0'
+                        activeOpacity={0.7}
                     >
-                        <Text small>Cadastre-se aqui</Text>
+                        <Text color='primary' small>Novo por aqui? <Text color='primary' small bold>Cadastre-se.</Text></Text>
                     </Touchable>
 
                 </ContainerKeyboardAvoiding>

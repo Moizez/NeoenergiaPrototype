@@ -16,7 +16,8 @@ export type ContainerProps = {
     customPadding?: string,
     removePaddingTop?: string | boolean,
     removePaddingBottom?: string | boolean,
-    radius?: string,
+    radius?: boolean,
+    customRadius?: string,
     border?: number,
     borderColor?: string
 }
@@ -32,6 +33,27 @@ export type ScrollViewProps = {
     horizontalScrollIndicator?: boolean
 }
 
+export type TouchableProps = {
+    background?: string,
+    align?: string,
+    justify?: string,
+    margin?: string,
+    wrap?: string,
+    row?: boolean,
+    width?: string,
+    maxWidth?: string,
+    height?: string,
+    maxHeight?: string,
+    hasPadding?: boolean,
+    customPadding?: string,
+    removePaddingTop?: string | boolean,
+    removePaddingBottom?: string | boolean,
+    radius?: boolean,
+    customRadius?: string,
+    border?: number,
+    borderColor?: string
+  }
+
 export type SpacerProps = {
     size?: number,
     vertical?: boolean
@@ -42,7 +64,7 @@ export type TextProps = {
     small?: boolean,
     big?: boolean,
     size?: number,
-    bold?: string,
+    bold?: boolean,
     align?: string,
     scale?: string,
     spacing?: number,
@@ -89,3 +111,22 @@ export type ModalProps = {
     background?: string,
     handleColor?: string
 }
+
+export type CoverProps = {
+    mode?: string,
+    width?: number,
+    height?: number,
+    justify?: string,
+    hasPadding?: boolean,
+    margin?: string,
+    radius?: string,
+    border?: number,
+    customPadding: string
+}
+
+export type ImageProps = {
+    mode?: string,
+    width?: number,
+    height?: number
+}
+

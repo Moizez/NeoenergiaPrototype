@@ -2,9 +2,9 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack'
 import { colors } from '../styles/theme.json'
 
-import SignIn from '../screens/SignIn';
-import SignUp from '../screens/SignUp';
-import Tour from '../screens/Tour';
+import SignInScreen from '../screens/SignInScreen';
+import SignUpScreen from '../screens/SignUpScreen';
+import TourScreen from '../screens/TourScreen';
 
 const Stack = createStackNavigator()
 
@@ -17,13 +17,13 @@ const AuthRoutes = ({ initialRoute }: AuthRoutesProps) => {
     return (
         <Stack.Navigator
             screenOptions={{ headerShown: false }}
-            initialRouteName={initialRoute ? 'SignIn' : 'Tour'}
+            initialRouteName={initialRoute ? 'SignInScreen' : 'TourScreen'}
         >
-            <Stack.Screen name='Tour' component={Tour} />
-            <Stack.Screen name='SignIn' component={SignIn} />
+            <Stack.Screen name='Tour' component={TourScreen} />
+            <Stack.Screen name='SignInScreen' component={SignInScreen} />
             <Stack.Screen
-                name='SignUp'
-                component={SignUp}
+                name='SignUpScreen'
+                component={SignUpScreen}
                 options={{
                     headerShown: true,
                     headerTitle: '',

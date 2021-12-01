@@ -1,15 +1,15 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack'
 
-import Home from '../screens/Home';
+import MainTab from './tab.routes';
 
 const Stack = createStackNavigator()
 
 const AppRoutes = () => {
 
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Home'>
-            <Stack.Screen name='Home' component={Home} />
+        <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='MainTab'>
+            <Stack.Screen name='MainTab' component={MainTab} />
         </Stack.Navigator>
     )
 }
