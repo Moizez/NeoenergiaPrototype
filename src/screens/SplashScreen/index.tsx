@@ -9,8 +9,8 @@ const SplashScreen = () => {
         <Container style={{ backgroundColor: '#fff' }} align='center' justify='center'>
             <Image
                 source={logo}
-                height={250}
-                width={250}
+                height='250px'
+                width='250px'
             />
         </Container>
     )

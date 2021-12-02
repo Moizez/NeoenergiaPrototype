@@ -105,8 +105,8 @@ export const Cover = styled.ImageBackground.attrs<CoverProps>(props => ({
 export const Image = styled.Image.attrs<ImageProps>(props => ({
   resizeMode: props.mode || 'contain',
 })) <ImageProps>`
-  width: ${props => props.width || '100'}px;
-  height: ${props => props.height || '100'}px;
+  width: ${props => props.width || '100px'};
+  height: ${props => props.height || '100px'};
 `;
 
 // Roboto_100Thin,
@@ -123,7 +123,7 @@ export const Image = styled.Image.attrs<ImageProps>(props => ({
 // Roboto_900Black_Italic
 
 export const Title = styled.Text <TextProps>`
-  font-size: ${props => props.small ? '20px' : props.big ? '40px' : props.size ? props.size + 'px' : '25px'};
+  font-size: ${props => props.small ? '20px' : props.big ? '35px' : props.size ? props.size + 'px' : '25px'};
   text-align: ${props => props.align || 'left'};
   letter-spacing: ${props => props.spacing ? props.spacing + 'px' : '0'};
   font-weight: ${props => props.bold ? 'bold' : 'normal'};
@@ -137,7 +137,7 @@ export const Title = styled.Text <TextProps>`
 
 export const Text = styled.Text <TextProps>`
   color: ${props => `${props.theme[props?.color] || props.color || colors.dark}`};
-  font-size: ${props => (props.small ? '13px' : '17px')};
+  font-size: ${props => props.small ? '13px' : props.big ? '17px' : props.size ? props.size + 'px' : '15px'};
   margin: ${props => props.margin || 0}px;
   font-weight: ${props => props.bold ? 'bold' : 'normal'};
   letter-spacing: ${props => props.spacing ? props.spacing + 'px' : '0'};
@@ -226,6 +226,7 @@ export const Modal = styled(Modalize).attrs<ModalProps>(props => ({
     backgroundColor: props.background || colors.light,
   }
 })) <ModalProps>``;
+
 
 
 

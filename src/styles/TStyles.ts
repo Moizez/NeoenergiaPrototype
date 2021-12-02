@@ -126,7 +126,7 @@ export type CoverProps = {
 
 export type ImageProps = {
     mode?: string,
-    width?: number,
-    height?: number
+    width?: string,
+    height?: string
 }
 

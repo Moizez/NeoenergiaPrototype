@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { MaterialIcons as Icon } from '@expo/vector-icons'
+import YoutubePlayer from "react-native-youtube-iframe"
 import { useDispatch, useSelector } from 'react-redux'
+import Slider from '../../components/Slider';
 
-import { ScrollView, Container, Title, Text, Button, ActivityIndicator, Spacer, Searchbar, Touchable } from '../../styles'
+import { ScrollView, Container, Title, Text, ActivityIndicator, Spacer, Searchbar, Touchable } from '../../styles'
 
 const Home = () => {
 
@@ -34,6 +36,7 @@ const Home = () => {
                         height='100px'
                         background='light'
                         customPadding='10px'
+                        align='center'
                         radius
                         style={{
                             marginTop: -70,
@@ -86,7 +89,7 @@ const Home = () => {
                         radius
                         background='light-primary'
                         margin='5px 0px'
-                         style={{ elevation: 5 }}
+                        style={{ elevation: 5 }}
                     >
                         <Icon name='bolt' color='#fff' size={50} />
                         <Text color='light' bold>Religação</Text>
@@ -100,7 +103,7 @@ const Home = () => {
                         radius
                         background='light-primary'
                         margin='5px 0px'
-                         style={{ elevation: 5 }}
+                        style={{ elevation: 5 }}
                     >
                         <Icon name='lightbulb' color='#fff' size={50} />
                         <Text color='light' bold>Falta de Luz</Text>
@@ -114,7 +117,7 @@ const Home = () => {
                         radius
                         background='light-primary'
                         margin='5px 0px'
-                         style={{ elevation: 5 }}
+                        style={{ elevation: 5 }}
                     >
                         <Icon name='bar-chart' color='#fff' size={50} />
                         <Text color='light' bold>Histórico</Text>
@@ -128,7 +131,7 @@ const Home = () => {
                         radius
                         background='light-primary'
                         margin='5px 0px'
-                         style={{ elevation: 5 }}
+                        style={{ elevation: 5 }}
                     >
                         <Icon name='search' color='#fff' size={50} />
                         <Text color='light' bold>Consulta de Débitos</Text>
@@ -142,7 +145,7 @@ const Home = () => {
                         radius
                         background='light-primary'
                         margin='5px 0px'
-                         style={{ elevation: 5 }}
+                        style={{ elevation: 5 }}
                     >
                         <Icon name='contacts' color='#fff' size={50} />
                         <Text color='light' bold>Contatos</Text>
@@ -206,6 +209,39 @@ const Home = () => {
                 </Container>
 
             </Container>
+
+            <Spacer size={20} />
+
+            {/* ÁREA DE VÍDEOS */}
+            <Container
+                background='light'
+                customPadding='0 20px'
+            >
+                <Title bold color='danger'>Nosso Canal</Title>
+
+                <Container
+                    wrap='wrap'
+                    align='center'
+                    justify='space-between'
+                >
+
+                    <YoutubePlayer
+                        height={180}
+                        //@ts-ignore
+                        width='100%'
+                        videoId='YACsVefFjDA'
+                    />
+
+                </Container>
+
+            </Container>
+
+            {/* ÁREA DO BANNER */}
+            <Container height='100px'>
+                <Slider />
+            </Container>
+
+            <Spacer size={20} />
 
         </ScrollView>
     )
